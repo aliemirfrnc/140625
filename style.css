@@ -1,0 +1,535 @@
+/* =========================================
+   1. GENEL AYARLAR VE ARKA PLAN
+========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Poppins:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1a1a1a;
+  background: url('assets/arkaplan2.png') no-repeat center 75%/cover;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  /* Scroll'u engeller */
+}
+
+/* Gizleme Sınıfı */
+.hidden {
+  display: none !important;
+}
+
+/* =========================================
+   2. AÇILIŞ EKRANI (INTRO) VE BUTONLAR
+========================================= */
+#intro-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 500;
+  transition: opacity 1s ease;
+}
+
+#typewriter-text {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  color: #ffb3c6;
+  text-shadow: 0 0 15px #ff4d6d;
+  text-align: center;
+  padding: 20px;
+}
+
+#start-btn {
+  margin-top: 30px;
+  padding: 15px 30px;
+  background: #ff4d6d;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255, 77, 109, 0.6);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#start-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(255, 77, 109, 1);
+}
+
+/* Müzik Butonu */
+#music-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #e0d0f0;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 100;
+  backdrop-filter: blur(5px);
+  transition: 0.3s;
+}
+
+#music-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* =========================================
+   3. ANA EKRAN: BAŞLIKLAR VE AĞAÇ
+========================================= */
+#main-screen {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+.top-titles {
+  position: absolute;
+  top: 5%;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+.top-titles h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.5rem;
+  color: #e6e6fa;
+  font-style: italic;
+  font-weight: normal;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+}
+
+.top-titles p {
+  font-size: 0.8rem;
+  letter-spacing: 6px;
+  color: #e0d0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.top-titles .line {
+  width: 40px;
+  height: 1px;
+  background-color: #e0d0f0;
+}
+
+/* Ağaç Konteyneri */
+#tree-wrapper {
+  position: absolute;
+  bottom: -5%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 80vh;
+  display: inline-block;
+  z-index: 20;
+}
+
+#the-tree {
+  height: 100%;
+  width: auto;
+  display: block;
+}
+
+/* =========================================
+   4. BALONCUKLAR VE PARÇACIKLAR
+========================================= */
+.bubble {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: floatBubble 3s ease-in-out infinite alternate;
+  z-index: 30;
+}
+
+.bubble:hover {
+  transform: scale(1.3);
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes floatBubble {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Koordinatların */
+#b-0 {
+  top: 61%;
+  left: 9%;
+}
+
+#b-1 {
+  top: 69%;
+  left: 22%;
+}
+
+#b-2 {
+  top: 41%;
+  left: 10%;
+}
+
+#b-3 {
+  top: 5%;
+  left: 42%;
+  transform: translateX(-50%);
+}
+
+#b-4 {
+  top: 45%;
+  left: 82%;
+}
+
+#b-5 {
+  top: 28%;
+  left: 76%;
+}
+
+#b-6 {
+  top: 64%;
+  left: 83%;
+}
+
+/* Düşen Parçacıklar */
+.particle {
+  position: absolute;
+  top: -10vh;
+  pointer-events: none;
+  z-index: 5;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+.bottom-footer {
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+}
+
+.bottom-footer p {
+  font-size: 0.8rem;
+  letter-spacing: 5px;
+  color: #e0d0f0;
+}
+
+/* =========================================
+   5. POPUP (MODAL) TASARIMI
+========================================= */
+#memory-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #0f051a;
+  color: #e0d0f0;
+  padding: 25px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 0 40px rgba(77, 29, 109, 0.8);
+  animation: popupAnim 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popupAnim {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+#modal-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  color: #ffb3c6;
+  text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+}
+
+#modal-date {
+  font-size: 0.85rem;
+  color: #8d5dcd;
+  letter-spacing: 2px;
+}
+
+.close-btn {
+  font-size: 2rem;
+  color: #ff4d6d;
+  cursor: pointer;
+  line-height: 1;
+  transition: 0.3s;
+}
+
+.close-btn:hover {
+  color: #fff;
+  transform: scale(1.2);
+}
+
+#modal-gallery-container {
+  width: 100%;
+  height: 300px;
+  background: #050109;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#modal-placeholder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #e0d0f0;
+  opacity: 0.3;
+}
+
+#modal-placeholder i {
+  font-size: 4rem;
+  margin-bottom: 10px;
+}
+
+#modal-memory-text p {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.4rem;
+  color: #ffb3c6;
+  text-align: center;
+  padding: 0 10px;
+}
+
+/* =========================================
+   6. YENİ EKLENEN MANZARA ÖĞELERİ (Kedi, Ateş, Siz)
+========================================= */
+
+/* Kedi GIF */
+#cat-gif {
+  position: absolute;
+  bottom: 0vh;
+  right: 40vw;
+  width: 80px;
+  height: auto;
+  z-index: 15;
+  animation: catFloat 4s ease-in-out infinite alternate;
+}
+
+@keyframes catFloat {
+  0% {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  100% {
+    transform: translateY(-8px) rotate(5deg);
+  }
+}
+
+/* Kamp Ateşi Kutusu */
+#scenery-box {
+  position: absolute;
+  bottom: 5vh;
+  left: 8vw;
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  z-index: 15;
+}
+
+.scenery-item {
+  height: auto;
+  width: auto;
+  display: block;
+}
+
+#camp-fire {
+  width: 80px;
+  animation: fireGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes fireGlow {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(255, 165, 0, 0.6));
+  }
+
+  100% {
+    filter: drop-shadow(0 0 25px rgba(255, 69, 0, 0.9));
+  }
+}
+
+.scenery-photo {
+  width: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  image-rendering: pixelated;
+}
+
+/* Sol Üst Ali & Sema Fotoğrafları */
+#couple-box {
+  position: absolute;
+  top: 5vh;
+  left: 5vw;
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+  z-index: 20;
+}
+
+.pixel-char {
+  width: 80px;
+  /* CÜCE OLDUNUZ :D */
+  height: auto;
+  image-rendering: pixelated;
+
+  /* ─── İŞTE O HAREKET EFEKTİ BURASI! ─── */
+  animation: gentleFloat 4s ease-in-out infinite;
+}
+
+/* =========================================
+   7. TEK BİR MOBİL (RESPONSIVE) ALANI (BÜTÜN MOBİL AYARLARI BURADA)
+========================================= */
+@media (max-width: 768px) {
+  .top-titles h1 {
+    font-size: 2.5rem;
+  }
+
+  .bubble {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
+
+  #modal-title {
+    font-size: 2rem;
+  }
+
+  #modal-gallery-container {
+    height: 250px;
+  }
+
+  #cat-gif {
+    width: 60px;
+    right: 3vw;
+    bottom: 2vh;
+  }
+
+  #scenery-box {
+    bottom: 4vh;
+    left: 5vw;
+    gap: 8px;
+  }
+
+  #camp-fire {
+    width: 55px;
+  }
+
+  .scenery-photo {
+    width: 35px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+  }
+
+  #couple-box {
+    top: 2vh;
+    left: 2vw;
+    gap: 10px;
+  }
+
+  .pixel-char {
+    width: 60px;
+    /* TELEFONDA DA MİNİCİK KALIYORSUNUZ */
+  }
+}
+
+/* ─── YENİ EKLENEN ANİMASYON ─── */
+@keyframes gentleFloat {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+
+  /* Çok hafif yukarı */
+  100% {
+    transform: translateY(0);
+  }
+}
