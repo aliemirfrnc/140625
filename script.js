@@ -55,13 +55,14 @@ const mainScreen = document.getElementById('main-screen');
 const modal = document.getElementById('memory-modal');
 const closeBtn = document.querySelector('.close-btn');
 const modalImg = document.getElementById('modal-img');
+const modalPlaceholder = document.getElementById('modal-placeholder');
 const modalDate = document.getElementById('modal-date');
 const modalDesc = document.getElementById('modal-desc');
 
 // --- TYPEWRITER EFEKTİ ---
 const introText = "Merhaba Sevgilim... Senin için küçük bir dünya yarattım. Hazır mısın?";
 let i = 0;
-const speed = 70;
+const speed = 42;
 
 function typeWriter() {
   if (i < introText.length) {
@@ -83,48 +84,72 @@ startBtn.addEventListener('click', () => {
     startParticles(); // Parçacıkları başlatan sihirli dokunuş!
   }, 1000);
 
-  bgMusic.play();
-  musicBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+  bgMusic.play()
+    .then(() => {
+      musicBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+    })
+    .catch(() => {
+      musicBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+    });
 });
 
 // --- MÜZİK KONTROLÜ ---
 musicBtn.addEventListener('click', () => {
   if (bgMusic.paused) {
-    bgMusic.play();
-    musicBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+    bgMusic.play()
+      .then(() => {
+        musicBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+      })
+      .catch(() => {
+        musicBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+      });
   } else {
     bgMusic.pause();
     musicBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
   }
 });
 
-// --- TEMİZLENMİŞ PARÇACIK (PARTICLE) SİSTEMİ ---
-const particleEmoji = ['💕', '💗', '🌸', '✨', '💝', '🌷'];
+// --- ZARİF SAKURA PARÇACIK SİSTEMİ ---
+const particleEmoji = ['🌸', '✦', '❀', ''];
 let particleTimer;
 
 function spawnParticle() {
   const el = document.createElement('div');
-  el.classList.add('particle'); // Senin 'hp' yerine bizim CSS class'ı!
-  el.textContent = particleEmoji[Math.floor(Math.random() * particleEmoji.length)];
+  el.classList.add('particle');
+  const symbol = particleEmoji[Math.floor(Math.random() * particleEmoji.length)];
+  el.textContent = symbol || '🌸';
 
-  // Rastgele konum, boyut ve düşüş hızı
   el.style.left = Math.random() * 100 + "vw";
-  el.style.fontSize = Math.random() * 15 + 15 + "px";
-  el.style.animationDuration = Math.random() * 4 + 4 + "s";
+  el.style.fontSize = Math.random() * 9 + 12 + "px";
+  el.style.animationDuration = Math.random() * 8 + 9 + "s";
+  el.style.animationDelay = Math.random() * 1.2 + "s";
+  el.style.setProperty('--drift', (Math.random() * 18 - 9).toFixed(1) + "vw");
+  el.style.opacity = (Math.random() * 0.34 + 0.34).toFixed(2);
 
   document.getElementById('particles').appendChild(el);
 
-  // Ekranda birikmesin diye 8 saniye sonra DOM'dan sil
-  setTimeout(() => el.remove(), 8000);
+  setTimeout(() => el.remove(), 18000);
 }
 
 function startParticles() {
-  // Her 500 milisaniyede bir yeni şekil fırlatır
-  particleTimer = setInterval(spawnParticle, 500);
+  for (let p = 0; p < 16; p++) {
+    setTimeout(spawnParticle, p * 160);
+  }
+  particleTimer = setInterval(spawnParticle, 900);
 }
 
 // --- BALONCUKLARA TIKLAMA VE MODAL İŞLEMLERİ ---
 const bubbles = document.querySelectorAll('.bubble');
+
+modalImg.addEventListener('load', () => {
+  modalImg.classList.remove('hidden');
+  modalPlaceholder.classList.add('hidden');
+});
+
+modalImg.addEventListener('error', () => {
+  modalImg.classList.add('hidden');
+  modalPlaceholder.classList.remove('hidden');
+});
 
 bubbles.forEach(bubble => {
   bubble.addEventListener('click', function () {
@@ -132,6 +157,8 @@ bubbles.forEach(bubble => {
     const memory = memories.find(m => m.id == id);
 
     if (memory) {
+      modalImg.classList.add('hidden');
+      modalPlaceholder.classList.remove('hidden');
       modalImg.src = memory.img;
       modalDate.innerText = memory.date;
       modalDesc.innerText = memory.text;

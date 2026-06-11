@@ -18,11 +18,20 @@
   <div id="particles"></div>
 
   <div id="intro-screen">
+    <p class="intro-kicker">Ali & Sema</p>
     <h1 id="typewriter-text"></h1>
-    <button id="start-btn" class="hidden">Hikayemize Başla ❤️</button>
+    <button id="start-btn" class="hidden">Hikayemize Başla</button>
   </div>
 
   <div id="main-screen" class="hidden">
+    <div class="cinematic-bg" aria-hidden="true">
+      <div class="sky-layer"></div>
+      <div class="moon-layer"></div>
+      <div class="distant-hills hill-back"></div>
+      <div class="distant-hills hill-front"></div>
+      <div class="sakura-veil"></div>
+      <div class="garden-floor"></div>
+    </div>
 
     <div class="top-titles">
       <h1>Aşk Ağacımız</h1>
@@ -33,13 +42,15 @@
     <div id="tree-wrapper">
       <img src="assets/agac-removebg-preview.png" id="the-tree" alt="Ağaç">
 
-      <div class="bubble" id="b-0" data-id="0">💌</div>
-      <div class="bubble" id="b-1" data-id="1">🌷</div>
-      <div class="bubble" id="b-2" data-id="2">📸</div>
-      <div class="bubble" id="b-3" data-id="3" style="width: 70px; height: 70px; font-size: 2rem;">✨</div>
-      <div class="bubble" id="b-4" data-id="4">🌙</div>
-      <div class="bubble" id="b-5" data-id="5">🎵</div>
-      <div class="bubble" id="b-6" data-id="6">💖</div>
+      <div class="tree-petals" aria-hidden="true"></div>
+
+      <div class="bubble" id="b-0" data-id="0" data-title="İlk Bakış">💌</div>
+      <div class="bubble" id="b-1" data-id="1" data-title="Yaz Hatırası">🌷</div>
+      <div class="bubble" id="b-2" data-id="2" data-title="Fotoğraflarımız">📸</div>
+      <div class="bubble" id="b-3" data-id="3" data-title="Parlayan Yıldızım" style="width: 70px; height: 70px; font-size: 2rem;">✨</div>
+      <div class="bubble" id="b-4" data-id="4" data-title="Gece Yürüyüşü">🌙</div>
+      <div class="bubble" id="b-5" data-id="5" data-title="Bizim Şarkımız">🎵</div>
+      <div class="bubble" id="b-6" data-id="6" data-title="Sonsuza Kadar">💖</div>
     </div>
 
     <div id="scenery-box">
@@ -53,7 +64,7 @@
     <img src="assets/Transparent Calico Gif.gif" id="cat-gif" alt="Sevimli Kedi">
 
     <div class="bottom-footer">
-      <p></p>
+      <p>ALI & SEMA · SAKURA NIGHT</p>
     </div>
 
     <button id="music-btn"><i class="fas fa-music"></i></button>
