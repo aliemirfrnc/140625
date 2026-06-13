@@ -1,100 +1,139 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="assets/pngtree-red-heart-icon-isolated-png-image_1726594-removebg-preview.png"
+      type="image/x-icon"
+    />
+    <title>14.06.25</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aşk Ağacımız</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+  <body>
+    <audio id="bg-music" loop>
+      <source src="assets/sarki.mp3" type="audio/mpeg" />
+    </audio>
 
-<body>
+    <div id="particles"></div>
 
-  <audio id="bg-music" loop>
-    <source src="assets/sarki.mp3" type="audio/mpeg">
-  </audio>
-
-  <div id="particles"></div>
-
-  <div id="intro-screen">
-    <p class="intro-kicker">Ali & Sema</p>
-    <h1 id="typewriter-text"></h1>
-    <button id="start-btn" class="hidden">Hikayemize Başla</button>
-  </div>
-
-  <div id="main-screen" class="hidden">
-    <div class="cinematic-bg" aria-hidden="true">
-      <div class="sky-layer"></div>
-      <div class="moon-layer"></div>
-      <div class="distant-hills hill-back"></div>
-      <div class="distant-hills hill-front"></div>
-      <div class="sakura-veil"></div>
-      <div class="garden-floor"></div>
+    <div id="intro-screen">
+      <p class="intro-kicker"></p>
+      <h1 id="typewriter-text"></h1>
+      <button id="start-btn" class="hidden">💖</button>
     </div>
 
-    <div class="top-titles">
-      <h1>Aşk Ağacımız</h1>
-      <p><span class="line"></span> HER DAL BİR ANI TAŞIR <span class="line"></span></p>
-    </div>
-
-
-    <div id="tree-wrapper">
-      <img src="assets/agac-removebg-preview.png" id="the-tree" alt="Ağaç">
-
-      <div class="tree-petals" aria-hidden="true"></div>
-
-      <div class="bubble" id="b-0" data-id="0" data-title="İlk Bakış">💌</div>
-      <div class="bubble" id="b-1" data-id="1" data-title="Yaz Hatırası">🌷</div>
-      <div class="bubble" id="b-2" data-id="2" data-title="Fotoğraflarımız">📸</div>
-      <div class="bubble" id="b-3" data-id="3" data-title="Parlayan Yıldızım" style="width: 70px; height: 70px; font-size: 2rem;">✨</div>
-      <div class="bubble" id="b-4" data-id="4" data-title="Gece Yürüyüşü">🌙</div>
-      <div class="bubble" id="b-5" data-id="5" data-title="Bizim Şarkımız">🎵</div>
-      <div class="bubble" id="b-6" data-id="6" data-title="Sonsuza Kadar">💖</div>
-    </div>
-
-    <div id="scenery-box">
-      <img src="assets/alipixel.png" id="ali-photo" class="pixel-char scenery-photo" alt="Ali">
-
-      <img src="assets/campfire.gif" id="camp-fire" alt="Kamp Ateşi">
-
-      <img src="assets/semapixel.png" id="sema-photo" class="pixel-char scenery-photo" alt="Sema">
-    </div>
-
-    <img src="assets/Transparent Calico Gif.gif" id="cat-gif" alt="Sevimli Kedi">
-
-    <div class="bottom-footer">
-      <p>ALI & SEMA · SAKURA NIGHT</p>
-    </div>
-
-    <button id="music-btn"><i class="fas fa-music"></i></button>
-  </div>
-
-  <div id="memory-modal" class="hidden">
-    <div class="modal-content">
-      <div id="modal-header">
-        <div id="modal-title-area">
-          <h1 id="modal-title">Fotoğraflarımız</h1>
-          <p id="modal-date">2023 - 2024</p>
-        </div>
-        <span class="close-btn">&times;</span>
+    <div id="main-screen" class="hidden">
+      <div class="cinematic-bg" aria-hidden="true">
+        <div class="sky-layer"></div>
+        <div class="moon-layer"></div>
+        <div class="distant-hills hill-back"></div>
+        <div class="distant-hills hill-front"></div>
+        <div class="sakura-veil"></div>
+        <div class="garden-floor"></div>
       </div>
 
-      <div id="modal-gallery-container">
-        <img id="modal-img" src="" alt="Anımız" class="hidden">
-        <div id="modal-placeholder">
-          <i class="fas fa-camera"></i>
-          <p>FOTOĞRAF EKLE</p>
+      <div class="top-titles">
+        <h1>Seni Seviyorum</h1>
+        <p>
+          <span class="line"></span>
+          <span class="line"></span>
+        </p>
+      </div>
+
+      <div id="tree-wrapper">
+        <img src="assets/agac-removebg-preview.png" id="the-tree" alt="Ağaç" />
+
+        <div class="tree-petals" aria-hidden="true"></div>
+
+        <div class="bubble" id="b-0" data-id="0" data-title="İlk Bakış">💌</div>
+        <div class="bubble" id="b-1" data-id="1" data-title="Yaz Hatırası">
+          🌷
+        </div>
+        <div class="bubble" id="b-2" data-id="2" data-title="Fotoğraflarımız">
+          📸
+        </div>
+        <div
+          class="bubble"
+          id="b-3"
+          data-id="3"
+          data-title="Parlayan Yıldızım"
+          style="width: 70px; height: 70px; font-size: 2rem"
+        >
+          ✨
+        </div>
+        <div class="bubble" id="b-4" data-id="4" data-title="Gece Yürüyüşü">
+          🌙
+        </div>
+        <div class="bubble" id="b-5" data-id="5" data-title="Bizim Şarkımız">
+          🎵
+        </div>
+        <div class="bubble" id="b-6" data-id="6" data-title="Sonsuza Kadar">
+          💖
         </div>
       </div>
 
-      <div id="modal-memory-text">
-        <p id="modal-desc"></p>
+      <div id="scenery-box">
+        <img
+          src="assets/alipixel.png"
+          id="ali-photo"
+          class="pixel-char scenery-photo"
+          alt="Ali"
+        />
+
+        <img src="assets/campfire.gif" id="camp-fire" alt="Kamp Ateşi" />
+
+        <img
+          src="assets/semapixel.png"
+          id="sema-photo"
+          class="pixel-char scenery-photo"
+          alt="Sema"
+        />
+      </div>
+
+      <img
+        src="assets/Transparent Calico Gif.gif"
+        id="cat-gif"
+        alt="Sevimli Kedi"
+      />
+
+      <div class="bottom-footer">
+        <p></p>
+      </div>
+
+      <button id="music-btn"><i class="fas fa-music"></i></button>
+    </div>
+
+    <div id="memory-modal" class="hidden">
+      <div class="modal-content">
+        <div id="modal-header">
+          <div id="modal-title-area">
+            <h1 id="modal-title">Fotoğraflarımız</h1>
+            <p id="modal-date">2023 - 2024</p>
+          </div>
+          <span class="close-btn">&times;</span>
+        </div>
+
+        <div id="modal-gallery-container">
+          <img id="modal-img" src="" alt="Anımız" class="hidden" />
+          <div id="modal-placeholder">
+            <i class="fas fa-camera"></i>
+            <p>FOTOĞRAF EKLE</p>
+          </div>
+        </div>
+
+        <div id="modal-memory-text">
+          <p id="modal-desc"></p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
